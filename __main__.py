@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 
 import sys
-from core.Demaa import Demaa
 
 # Abort if not Python 3
 if sys.version_info < (3,0):
-	print(startPrintLine)
+	print('\n--------------------------------------------------------------\n')
 	print('Your Python version is {}. Please run with Python 3.'.format(".".join(map(str, sys.version_info[:3]))))
-	print(endPrintLine)
+	print('\n--------------------------------------------------------------\n')
     
 	quit()	
+
+from core.Demaa import Demaa
 
 # Run the program
 if len(sys.argv) == 1:
@@ -23,9 +24,14 @@ if len(sys.argv) == 1:
 	from plugins import *
 
 	# No arguments passed, show the prompt
-	print('\n--------------------------------------------------------------')
-	print('Format for usage: $ python3 demaa input_path analysis_module_name')
-	print('e.g. $ python3 demaa ./demaa/input/test.tsv Heatmap')
+	print('\n--------------------------------------------------------------\n')
+	print('DEMAA')
+	print('\n--------------------------------------------------------------\n')
+	print('Arguments for usage:\n1. function_type = new, results, get\n2. input_path = /path/file.tsv\n3. analysis_module_name = Heatmap')
+	
+	print('\ne.g.\n\n$ python demaa new ./demaa/input/test.tsv Heatmap')
+	print('or $ python demaa results')
+	print('or $ python demaa get 3')
 	
 	print('\nAvailable core analysis modules:')
 	
@@ -43,6 +49,6 @@ if len(sys.argv) == 1:
 
 else:
 	# Instantiate the class with the arguments provided
-	Demaa(sys.argv[1], sys.argv[2])
+	Demaa(sys.argv[1], sys.argv[2], sys.argv[3])
 
 

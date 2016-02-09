@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-class Test():
+class Test2():
 	'Testing plugin class import'
 	
 	def __init__(self, input):

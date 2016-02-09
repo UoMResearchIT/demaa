@@ -4,6 +4,7 @@
 import sys
 import os
 import csv
+import builtins
 
 # Import core analysis classes
 import core
@@ -23,24 +24,37 @@ class Demaa():
 	endPrintLine = '--------------------------------------------------------------\n'
 	lineCount = 0
 	
-	def __init__(self, input, analysis):
-		self.input = input
-		self.analysis = analysis
+	def __init__(self, type, input, analysis):
+		if type == 'new':
+			self.input = input
+			self.analysis = analysis
 
-		print(self.startPrintLine)
-		print('Starting DEMAA analysis')
-		print(self.endPrintLine)
+			print(self.startPrintLine)
+			print('Starting DEMAA analysis')
+			print(self.endPrintLine)
 		
-		# Check the input file is valid
-		self.validateInputFile(self.input)
+			# Check the input file is valid
+			self.validateInputFile(self.input)
 		
-		# Check the analysis module is valid
-		self.validateAnalysisOption(self.analysis)
+			# Check the analysis module is valid
+			self.validateAnalysisOption(self.analysis)
 		
-		# Run the analysis
-		self.analyseData(self.input, self.analysis, self.lineCount)
+			# Run the analysis
+			self.analyseData(self.input, self.analysis, self.lineCount)
 
-		print(self.endPrintLine)
+			print('\n'+self.endPrintLine)
+			
+		elif type == 'results':
+			print('List saved analysis results...')
+			print(self.endPrintLine)
+		
+		elif type == 'get':
+			print('Retreive saved analysis results...')
+			print(self.endPrintLine)
+			
+		else:
+			print('Please specify new, results, or get for the first argument.')
+			print(self.endPrintLine)
 
 	def validateInputFile(self, input):
 		print('Checking input: {}...'.format(input))
@@ -69,17 +83,60 @@ class Demaa():
 		else:
 			print('  > Error, analysis module '+analysis+' not available, exiting.\n')
 			quit()
-		
+
 	def analyseData(self, input, analysis, lineCount):
-		print('Analysing data...')
+		print('Reading data from file...')
 		
 		# Open the tsv file
+		parsedFile = {}
 		with open(input) as tsv:
 			for line in csv.reader(tsv, dialect = 'excel-tab'):
 				if line:
 					#print(line[0])
+					parsedFile[lineCount] = line
 					lineCount += 1
 
-		print('  > Read {} lines from {}, performing analysis... \n'.format(lineCount, input))
+		head, tail = os.path.split(input)
+		print('  > Read {} lines from {}, performing analysis... \n'.format(lineCount, tail))
+		
+		# Run the analysis
+		print('Running analysis module: {}...'.format(analysis))
+		
+		# Get the list of imported modules
+		modules = self.availableModules()
+	
+		# Get the module object
+		module = getattr(modules[analysis]['import'], modules[analysis]['name'])
+	
+		# Get the class object from the module
+		class_ = getattr(module, modules[analysis]['name'])
+	
+		# Run the class, with indentation
+		module.print = Demaa.print
+		class_(parsedFile)
+
+	def availableModules(self):
+		# Get a list of available modules
+		modules = {}
+		
+		for item in dir(core):
+			if '__' not in item and 'Demaa' not in item:
+				modules[item] = {}
+				modules[item]['name'] = item
+				modules[item]['import'] = core
+	
+		for item in dir(plugins):
+			if '__' not in item and not item.islower():
+				modules[item] = {}
+				modules[item]['name'] = item
+				modules[item]['import'] = plugins
+			
+		return modules
+
+	# Patch the print function to indent module class output
+	@staticmethod
+	def print(*args, **kwargs):
+		builtins.print("  > ", *args, **kwargs)
+
 
 

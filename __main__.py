@@ -49,6 +49,20 @@ if len(sys.argv) == 1:
 
 else:
 	# Instantiate the class with the arguments provided
-	Demaa(sys.argv[1], sys.argv[2], sys.argv[3])
+	if len(sys.argv) == 3:
+		type = sys.argv[1]
+		input = sys.argv[2]
+		analysis = 0
+		
+	elif len(sys.argv) == 2:
+		type = sys.argv[1]
+		input = 0
+		analysis = 0
+	else: 
+		type = sys.argv[1]
+		input = sys.argv[2]
+		analysis = sys.argv[3]
+		
+	Demaa(type, input, analysis)
 
 

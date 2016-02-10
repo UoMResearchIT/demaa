@@ -45,14 +45,17 @@ class Demaa():
 			print('\n'+self.endPrintLine)
 			
 		elif type == 'results':
+			print(self.startPrintLine)
 			print('List saved analysis results...')
 			print(self.endPrintLine)
 		
 		elif type == 'get':
+			print(self.startPrintLine)
 			print('Retreive saved analysis results...')
 			print(self.endPrintLine)
 			
 		else:
+			print(self.startPrintLine)
 			print('Please specify new, results, or get for the first argument.')
 			print(self.endPrintLine)
 

@@ -1,27 +1,3 @@
-System Properties:
-Operating System:	 Microsoft Windows NT 5.1.2600 Service Pack 2
-System User Name:	 hcw
-Machine Name:	 RPC354
-
-Data properties:
-
-Recording name:	 Rec 01
-Recording date:	 01/04/2009
-Recording time:	 10:20:21
-Recording resolution:	 1280 x 1024
-
-Export date:	 24/10/2012
-Export time:	 12:01:55
-
-Participant:	 andy
-Filter settings:
-
-Eye: Average
-Validity: Normal
-Fixation filter: ClearView fixation filter
-Fixation radius: 100
-Min duration: 200
-
 Timestamp	DateTimeStamp	DateTimeStampStartOffset	Number	GazePointXLeft	GazePointYLeft	CamXLeft	CamYLeft	DistanceLeft	PupilLeft	ValidityLeft	GazePointXRight	GazePointYRight	CamXRight	CamYRight	DistanceRight	PupilRight	ValidityRight	FixationIndex	GazePointX	GazePointY	Event	EventKey	Data1	Data2	Descriptor	StimuliName	StimuliID	MediaWidth	MediaHeight	MediaPosX	MediaPosY	MappedFixationPointX	MappedFixationPointY	FixationDuration	AoiIds	AoiNames	WebGroupImage	MappedGazeDataPointX	MappedGazeDataPointY	MicroSecondTimestamp	AbsoluteMicroSecondTimestamp	
 0																					ImageStart	8	0	0	1934.2med.JPG																	
 34	10:20:21.034	00:00:00.034	0	655.3082	479.3716	0.6160563	0.8047475	823.4838	4.621793	0	697.8442	486.4601	0.382538	0.7859479	815.6191	4.602654	0	2	677	483						1934.2med.JPG	0	578	764	351	130	304	376	2093	0	AOI_1		326	353	34237	153079215	

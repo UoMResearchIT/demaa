@@ -24,9 +24,9 @@ class Demaa():
 	endPrintLine = '--------------------------------------------------------------\n'
 	lineCount = 0
 	
-	def __init__(self, type, input, analysis):
+	def __init__(self, type, inputFile, analysis):
 		if type == 'new':
-			self.input = input
+			self.inputFile = inputFile
 			self.analysis = analysis
 
 			print(self.startPrintLine)
@@ -34,13 +34,13 @@ class Demaa():
 			print(self.endPrintLine)
 		
 			# Check the input file is valid
-			self.validateInputFile(self.input)
+			self.validateInputFile(self.inputFile)
 		
 			# Check the analysis module is valid
 			self.validateAnalysisOption(self.analysis)
 		
 			# Run the analysis
-			self.analyseData(self.input, self.analysis, self.lineCount)
+			self.analyseData(self.inputFile, self.analysis, self.lineCount)
 
 			print('\n'+self.endPrintLine)
 			
@@ -59,11 +59,11 @@ class Demaa():
 			print('Please specify new, results, or get for the first argument.')
 			print(self.endPrintLine)
 
-	def validateInputFile(self, input):
-		print('Checking input: {}...'.format(input))
+	def validateInputFile(self, inputFile):
+		print('Checking input: {}...'.format(inputFile))
 		
 		# Validation
-		if os.path.isfile(input):
+		if os.path.isfile(inputFile):
 			print('  > Success, input file found.\n')
 		
 		else:
@@ -87,19 +87,19 @@ class Demaa():
 			print('  > Error, analysis module '+analysis+' not available, exiting.\n')
 			quit()
 
-	def analyseData(self, input, analysis, lineCount):
+	def analyseData(self, inputFile, analysis, lineCount):
 		print('Reading data from file...')
 		
 		# Open the tsv file
 		parsedFile = {}
-		with open(input) as tsv:
+		with open(inputFile) as tsv:
 			for line in csv.reader(tsv, dialect = 'excel-tab'):
 				if line:
 					#print(line[0])
 					parsedFile[lineCount] = line
 					lineCount += 1
 
-		head, tail = os.path.split(input)
+		head, tail = os.path.split(inputFile)
 		print('  > Read {} lines from {}, performing analysis... \n'.format(lineCount, tail))
 		
 		# Run the analysis

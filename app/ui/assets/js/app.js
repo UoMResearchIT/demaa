@@ -1,0 +1,1 @@
+/* Main js for the DEMAA application */

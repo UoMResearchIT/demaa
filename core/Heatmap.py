@@ -6,6 +6,7 @@ class Heatmap():
 	def __init__(self, parsedFile):
 		self.parsedFile = parsedFile
 		
+		# Testing CLI inputs
 		x = input("Please enter value for x: ")
 		print("x set to {}".format(x))
 

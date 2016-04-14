@@ -17,7 +17,7 @@ from plugins import *
 
 # Main class
 class Demaa():
-	'Commandline interface for eye tracking analysis'
+	'Boilerplate methods for interacting with the analysis modules, validating input, and outputing data to the user'
 	
 	# Vars
 	startPrintLine = '\n--------------------------------------------------------------'

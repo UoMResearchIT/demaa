@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+'''
+	The command line interface for interacting with the user
+	This file uses core/Demaa.py to load the analysis modules,
+	parse the tsv files and output the results.
+'''
+
 import sys
 
 # Abort if not Python 3

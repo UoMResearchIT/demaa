@@ -31,4 +31,4 @@ e.g.
 
 	$ python demaa get 3
 	
-If you have multiple Python version installed you may have to substitute python with python3, depending on your installation.
+If you have multiple Python versions installed you may have to substitute python with python3, depending on your installation. A warning will be displayed if you run the application with less than version 3.

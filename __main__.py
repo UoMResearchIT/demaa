@@ -16,7 +16,7 @@ if sys.version_info < (3,0):
     
 	quit()	
 
-from core.Demaa import Demaa
+from Demaa import Demaa
 
 # Run the program
 if len(sys.argv) == 1:

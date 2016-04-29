@@ -10,7 +10,13 @@ class DB():
 	
 	# Vars
 	
+	# Constructor
 	def __init__(self):
-		# Constructor
+		
 	
-
+	def connectDB(self):
+		pass
+	
+	
+	def queryDB(self):
+		pass		

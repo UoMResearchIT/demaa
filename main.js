@@ -1,7 +1,8 @@
 /*
- *
- *
- *
+ *	Main JS for the app
+ *	
+ *	@author rob.dunne@manchester.ac.uk
+ *	August 2016
  *
  */
 
@@ -29,7 +30,7 @@ app.on('window-all-closed', function() {
 // This method will be called when Electron has done everything
 // initialization and ready for creating browser windows.
 app.on('ready', function() {
-	// call python?
+	// Call the python API
 	var subpy = require('child_process').spawn('python3', ['./app/api.py']);
 	
 	var rq = require('request-promise-native');

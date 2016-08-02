@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-	Database model for use by both the REST and CLI APIs
+	Database model
 '''
 
 # Main class

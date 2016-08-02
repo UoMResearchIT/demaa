@@ -1,0 +1,9 @@
+{
+  "name": "eta-app",
+  "version": "0.2.0",
+  "main": "main.js",
+  "dependencies": {
+    "electron-prebuilt": "*",
+    "request-promise-native": "^1.0.2"
+  }
+}

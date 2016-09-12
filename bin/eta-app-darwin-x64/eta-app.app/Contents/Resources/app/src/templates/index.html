@@ -1,0 +1,70 @@
+<!doctype html>
+<html ng-app="etaApp" ng-cloak>
+	<head>
+		<!-- Metadata -->
+		<meta charset="UTF-8">
+    <title>ETA: Eye tracking analysis</title>
+
+		<!-- CSS -->
+		<link type="text/css" rel="stylesheet" href="../assets/css/font-awesome.min.css" media="all" />
+		<link type="text/css" rel="stylesheet" href="../assets/css/ui-grid.min.css" media="all" />
+  	<link type="text/css" rel="stylesheet" href="../assets/css/nprogress.css" media="all" />
+		<link type="text/css" rel="stylesheet" href="../assets/css/style.css" media="all" />
+
+		<!-- JS -->
+		<script src="../assets/js/angular.min.js"></script>
+		<script>window.$ = window.jQuery = require('jquery');</script>
+		<script src="../assets/js/d3.min.js"></script>
+		<script src="../assets/js/ui-grid.min.js"></script>
+		<script src="../assets/js/app-functions.js"></script>
+		<script src="../assets/js/app.js"></script>
+	</head>
+	<body ng-controller="appController">
+		<nav id="eta-nav-main">
+			<a href="#eta-data-view"><span class="fa fa-check"></span>Datasets</a>
+			<a href="#eta-analysis-view" style="opacity:0.5"><span></span>Analysis</a>
+			<a href="#eta-visualisation-view" style="opacity:0.5"><span></span>Visualisation</a>
+		</nav>
+
+		<!-- Datasets view: Load, save, retrieve, and edit datasets -->
+		<div id="eta-data-view" class="eta-view">
+			<div id="eta-data-saved-list">
+				<table cellpadding="10" cellspacing="0">
+					<thead>
+						<tr>
+							<th>Index</th>
+							<th>ID</th>
+							<th>Filename</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in datasetsList track by item._id | orderBy:$index:reverse" ng-click="viewData(item._id, $index)" ng-class="{selected: $index == datagrid.selected}">
+							<td>{{item.timestamp}}</td>
+							<td>ID: {{item._id}}</td>
+							<td>{{item.filename}}</td>
+							<td>{{item.rows}} rows</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div id="eta-data-button-group">
+				<button id="eta-open-file" ng-click="openFile()"><i class="fa fa-upload" aria-hidden="true"></i> Add new dataset</button>
+				<div class="clear"></div>
+			</div>
+
+			<div id="eta-data-dataset-grid">
+				<div ui-grid="datagrid" class="datagrid"></div>
+			</div>
+		</div>
+
+		<!-- Analysis view: Perform data analysis using Python plugins -->
+		<div id="eta-analysis-view" class="eta-view">
+				<h1>Analysis</h1>
+		</div>
+
+		<!-- Visualisation view: Create visualisations using D3 and JSON data from analysis plugins -->
+		<div id="eta-visualisation-view" class="eta-view">
+				<h1>Visualisation</h1>
+		</div>
+	</body>
+</html>

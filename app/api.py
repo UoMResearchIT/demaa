@@ -1,18 +1,35 @@
 #!/usr/bin/env python
-from __future__ import print_function
+'''
+    API calls for data analysis functions. These are available to plugins.
+    The API takes parameters and returns JSON for the D3 UI.
+'''
+
+# Imports
+import json
+import csv
 import sys
-from flask import Flask, render_template
-app = Flask(__name__)
+import importlib
 
-@app.route("/")
-def start():
-    return render_template('index.html')
+from modules import *
 
-@app.route("/api")
-def api():
-    return "API calls"
+# Main class
+class API():
+    'Controller for interacting with the analysis modules, validating input, and outputing JSON data to the UI'
 
-if __name__ == "__main__":
-    print('oh hello')
-    sys.stdout.flush()
-    app.run()
+    def __init__(self, analysis):
+        self.analysis = analysis
+        self.dataset = sys.stdin.readlines()
+        self.doAnalysis()
+
+    # Call the relevant analysis module
+    def doAnalysis(self):
+        # Dynamically call the analysis class from the string name
+        dataset = self.dataset[0]
+        reader = csv.reader(dataset.splitlines(), delimiter=',')
+
+        module = importlib.import_module('.'+self.analysis, 'modules')
+        analysisResult = module.process(dataset)
+
+        print(analysisResult)
+
+API(sys.argv[1])

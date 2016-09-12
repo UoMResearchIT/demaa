@@ -1,0 +1,242 @@
+/*
+ *	Styles for the application
+ *
+ *	@author rob.dunne@manchester.ac.uk
+ *	August 2016
+ *
+ */
+
+* {
+  font-family: arial;
+  margin: 0;
+  padding: 0;
+  color: #2c2c2c;
+}
+
+html {
+  background: #fff;
+  background: #2c2c2c;
+  min-width: 1200px;
+}
+
+h1 {
+  font-size: 1.4em;
+  padding: 10px;
+}
+
+#eta-nav-main {
+  background: #ff3100;
+}
+
+#eta-nav-main span {
+  color: #fff;
+}
+
+#eta-nav-main a {
+  width: 31%;
+  padding: 1%;
+  text-align: center;
+  color: #fff;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.1em;
+  border-right: 1px solid #fff;
+}
+
+#eta-nav-main a:last-child {
+  border: none;
+}
+
+#eta-nav-main a span {
+  padding: 0 10px 0 0;
+}
+
+.eta-view {
+  display: none;
+}
+
+#eta-data-view {
+  display: block;
+}
+
+#eta-data-saved-list {
+
+}
+
+#eta-no-datasets {
+  padding: 10px;
+  background: #2c2c2c;
+  color: #fff;
+  text-align: center;
+}
+
+#eta-data-saved-list table {
+  width: 100%;
+}
+
+#eta-data-saved-list thead {
+  display: none;
+}
+
+#eta-data-saved-list thead tr {
+  background: #3d3d3d!important;
+}
+
+/*#eta-data-saved-list thead,*/
+#eta-data-saved-list tbody {
+  display: block;
+}
+
+#eta-data-saved-list tbody {
+  width: 100%;
+  height: 30vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: repeating-linear-gradient(
+    45deg,
+    #ffffff,
+    #ffffff 1px,
+    #dddddd 1px,
+    #dddddd 2px
+  );
+}
+
+#eta-data-saved-list table tr {
+  width: 100%;
+  background: #fff;
+  color: #000;
+  display: block;
+  border-bottom: 1px solid #2c2c2c;
+}
+
+#eta-data-saved-list table tr:hover {
+  background: #2c2c2c;
+  color: #fff!important;
+  cursor: pointer;
+}
+
+#eta-data-saved-list .selected {
+  background: #666;
+  color: #fff!important;
+}
+
+#eta-data-saved-list table tr td {
+  padding: 5px 15px;
+  color: inherit;
+  text-align: left;
+  border-right: 1px solid #2c2c2c;
+  width:300px;
+  overflow: hidden;
+}
+
+#eta-data-saved-list table tr td {
+  text-align: left;
+  font-size: 0.8em;
+  padding: 5px;
+  text-align: left;
+}
+
+#eta-data-button-group {
+  background: #444;
+}
+
+#eta-data-button-group button {
+  background: #666;
+  font-size: 16px;
+  float: right;
+  padding: 10px;
+  border-radius: 0;
+  margin-right: 15px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+#eta-open-file i {
+  margin: 0 5px 0 0;
+  color: #fff;
+}
+
+#eta-data-button-group button:hover {
+  background: #ff3100;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  -ms-transition: background 0.3s ease-in-out;
+  -o-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+
+#eta-data-button-group button:focus {
+  outline:0;
+}
+
+.datagrid {
+  width: 99vw;
+  height: 58vh;
+  font-size: 10px;
+}
+
+#eta-analysis-view {
+
+}
+
+#eta-data-analysis-options {
+  padding: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #fff;
+}
+
+#eta-data-analysis-output {
+  margin: 10px 0;
+}
+
+#eta-data-analysis-output-text {
+  white-space: pre;
+  height: 80vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: #2c2c2c;
+  color: #fff;
+  font-size: 12px;
+  font-family: courier;
+  padding: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.clear {
+  clear: both;
+}

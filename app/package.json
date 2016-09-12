@@ -1,0 +1,16 @@
+{
+  "name": "eta-app",
+  "version": "0.2.0",
+  "main": "main.js",
+  "dependencies": {
+    "angular-ui-grid": "^3.2.6",
+    "csv": "^1.1.0",
+    "electron-prebuilt": "*",
+    "jquery": "^3.1.0",
+    "moment": "^2.14.1",
+    "nedb": "^1.8.0",
+    "nprogress": "^0.2.0",
+    "remote": "^0.2.6",
+    "request-promise-native": "^1.0.2"
+  }
+}

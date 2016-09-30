@@ -176,13 +176,14 @@ etaApp.controller('appController', ['$scope', function($scope) {
 
   $scope.analyseDataset = function() {
     if($scope.selectedAnalysis.length > 0 && $scope.selectedDataset.length > 0 ) {
-      $scope.analysisOutput += '> Analysing dataset '+$scope.selectedDataset+' using '+$scope.selectedAnalysis+' module...\n';
+      $scope.analysisOutput += '> Analysing dataset ID:'+$scope.selectedDataset+' using '+$scope.selectedAnalysis+' module...\n';
       //$scope.analysisOutput += '> Output from analysis: \n';
 
       var dataString = '';
       var json = {};
       var analysis = $scope.selectedAnalysis;
       var fileID = $scope.selectedDataset;
+      var analysisData = ''
 
       // Get the data
       db.findOne({ _id: fileID }, function(err, doc) {
@@ -196,12 +197,20 @@ etaApp.controller('appController', ['$scope', function($scope) {
         // Get the output data from the python API
         py.stdout.on('data', function(data) {
           // Update the output
+          /*
           var message = data.toString();
           message = message.replace(/(?:\r\n|\r|\n)/g, '\n> ');
           $scope.analysisOutput += '> '+message+'\n';
           $scope.$apply();
+          */
 
-          // Scroll down
+          analysisData += data.toString();
+
+          // Post update message and scroll down
+          $scope.analysisOutput += '> Fetching analysis output: \n\n';
+          $scope.analysisOutput += analysisData+'\n\n';
+          $scope.$apply();
+
           var elem = document.getElementById('eta-data-analysis-output-text');
           elem.scrollTop = elem.scrollHeight;
         });
@@ -217,7 +226,15 @@ etaApp.controller('appController', ['$scope', function($scope) {
           elem.scrollTop = elem.scrollHeight;
 
           // Save the processed data in the database
+          db.update({ id: fileID }, { $set: { analysis: analysisData } }, { multi: true }, function (err, numReplaced) {
+            console.log('DB updated with analysis.');
+            //console.log('Data: '+analysisData);
 
+            // Update the output
+            $scope.analysisOutput += '> Database updated with analysis.\n';
+            $scope.analysisOutput += '> Processed data now available for data visualisation.\n>\n';
+            $scope.$apply();
+          });
 
           // Show an update message
           $scope.notifyUser('Data Analysis Update', 'Analysis complete for '+fileID);

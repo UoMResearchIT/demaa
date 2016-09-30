@@ -25,7 +25,7 @@ class API():
     def doAnalysis(self):
         # Dynamically call the analysis class from the string name
         dataset = self.dataset[0]
-        reader = csv.reader(dataset.splitlines(), delimiter=',')
+        #reader = csv.reader(dataset.splitlines(), delimiter=',')
 
         module = importlib.import_module('.'+self.analysis, 'modules')
         analysisResult = module.process(dataset)

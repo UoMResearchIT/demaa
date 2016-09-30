@@ -180,6 +180,37 @@ h1 {
 
 }
 
+#eta-analysis-view select {
+  padding: 5px;
+  margin: 0 5px;
+}
+
+#eta-analysis-view option {
+  padding: 5px;
+  font-weight: bold;
+}
+
+#eta-analysis-view button {
+  padding: 3px 25px;
+  font-weight: bold;
+  background: #2c2c2c;
+  border: 1px solid #2c2c2c;
+  border-radius: 3px;
+  color: #fff;
+}
+
+#eta-analysis-view button:hover {
+  background: #555;
+  border: 1px solid #555;
+  cursor: pointer;
+  position: relative;
+  top: 1px;
+}
+
+#eta-analysis-view button:focus {
+  outline:0;
+}
+
 #eta-data-analysis-options {
   padding: 20px;
   font-size: 16px;
